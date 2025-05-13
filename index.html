@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScaleEdge Media - Project Inquiry</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .form-wrapper {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 20px;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    label {
+      margin-top: 15px;
+      display: block;
+      font-weight: 500;
+      color: #374151;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      margin-top: 25px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .progress {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #2563eb;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .multi-select {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .multi-select label {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #f9fafb;
+    }
+
+    .multi-select input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    .multi-select label:hover {
+      background-color: #e0e7ff;
+    }
+
+    .multi-select input[type="checkbox"]:checked + label {
+      background-color: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <h2>Let’s Scale Your Business</h2>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form action="https://formspree.io/f/xyzwbpag" method="POST" id="multiStepForm">
+      
+      <!-- Step 1 -->
+      <div class="form-step active">
+        <label>Full Name</label>
+        <input type="text" name="Full Name" required>
+        
+        <label>Brand / Business Name</label>
+        <input type="text" name="Business Name" required>
+        
+        <label>Industry</label>
+        <select name="Industry" required>
+          <option value="">Select</option>
+          <option>Fashion</option>
+          <option>Tech</option>
+          <option>Fitness</option>
+          <option>Education</option>
+          <option>Personal Brand</option>
+          <option>Finance</option>
+          <option>Real Estate</option>
+          <option>Travel</option>
+          <option>Health & Wellness</option>
+          <option>Food & Beverage</option>
+          <option>Other</option>
+        </select>
+        
+        <div class="btn-group">
+          <span></span>
+          <button type="button" onclick="nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="form-step">
+        <label>Biggest Challenges in Business</label>
+        <textarea name="Challenges" required></textarea>
+        
+        <label>Social Platforms You Use</label>
+        <input type="text" name="Platforms" required>
+        
+        <label>Monthly Marketing Budget</label>
+        <select name="Budget" required>
+          <option>₹0–5k</option>
+          <option>₹5k–10k</option>
+          <option>₹10k–25k</option>
+          <option>₹25k–50k</option>
+          <option>₹50k–1L</option>
+          <option>₹1L+</option>
+        </select>
+        
+        <div class="btn-group">
+          <button type="button" onclick="prevStep()">Back</button>
+          <button type="button" onclick="nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="form-step">
+        <label>Preferred Contact Method</label>
+        <select name="Contact Method" required>
+          <option>Email</option>
+          <option>WhatsApp</option>
+          <option>Phone Call</option>
+          <option>Telegram</option>
+          <option>Other</option>
+        </select>
+        
+        <label>Contact Info</label>
+        <input type="text" name="Contact Info" required>
+        
+        <label>Website / Social Media Link</label>
+        <input type="url" name="Social Media Link">
+        
+        <label>Business Stage</label>
+        <select name="Business Stage" required>
+          <option>Idea Stage</option>
+          <option>Launched</option>
+          <option>Growing</option>
+          <option>Scaling</option>
+          <option>Established</option>
+        </select>
+        
+        <div class="btn-group">
+          <button type="button" onclick="prevStep()">Back</button>
+          <button type="button" onclick="nextStep()">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="form-step">
+        <label>Company Size</label>
+        <select name="Company Size" required>
+          <option>Solo</option>
+          <option>2–5</option>
+          <option>5–10</option>
+          <option>10–50</option>
+          <option>50–100</option>
+          <option>100+</option>
+        </select>
+
+        <label>Services You're Interested In (tick all that apply)</label>
+        <div class="multi-select">
+          <input type="checkbox" id="contentStrategy" name="Service Interest" value="Content Strategy">
+          <label for="contentStrategy">Content Strategy</label>
+
+          <input type="checkbox" id="socialMedia" name="Service Interest" value="Social Media Management">
+          <label for="socialMedia">Social Media Management</label>
+
+          <input type="checkbox" id="paidAds" name="Service Interest" value="Paid Ads">
+          <label for="paidAds">Paid Ads</label>
+
+          <input type="checkbox" id="branding" name="Service Interest" value="Branding">
+          <label for="branding">Branding & Design</label>
+
+          <input type="checkbox" id="influencerMarketing" name="Service Interest" value="Influencer Marketing">
+          <label for="influencerMarketing">Influencer Marketing</label>
+
+          <input type="checkbox" id="websiteCreation" name="Service Interest" value="Website Creation">
+          <label for="websiteCreation">Website Creation</label>
+
+          <input type="checkbox" id="seo" name="Service Interest" value="SEO">
+          <label for="seo">SEO</label>
+
+          <input type="checkbox" id="emailMarketing" name="Service Interest" value="Email Marketing">
+          <label for="emailMarketing">Email Marketing</label>
+        </div>
+
+        <label>When Would You Like to Start?</label>
+        <select name="Timeframe" required>
+          <option>Immediately</option>
+          <option>1–2 Weeks</option>
+          <option>1 Month</option>
+          <option>Just Exploring</option>
+        </select>
+
+        <label>Additional Notes (Optional)</label>
+        <textarea name="Notes"></textarea>
+
+        <div class="btn-group">
+          <button type="button" onclick="prevStep()">Back</button>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".form-step");
+    const progressBar = document.getElementById("progressBar");
+
+    function showStep(step) {
+      steps.forEach((s, index) => {
+        s.classList.toggle("active", index === step);
+      });
+      progressBar.style.width = ((step + 1) / steps.length) * 100 + "%";
+    }
+
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    }
+  </script>
+</body>
+</html>
